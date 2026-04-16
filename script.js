@@ -694,11 +694,90 @@ function updateContactType(id, newType) {
 
 // ═══ CRM TABLE DATA + RESIZABLE COLUMNS ═══
 const crmLeads = [
-  { id: 1, name: 'George Saadeh', company: 'Saadeh Holding', phone: '+961 3 445 621', rep: 'Ahmed Nassar', source: 'Referral', sourceStyle: 'background:#f3e8ff;color:#7e22ce;', stage: 'Quote Sent', stageStyle: 'background:#fef3c7;color:#92400e;', scope: 'Façade · 3 mo rental', value: '$22,000', lastActivity: 'Today', nextAction: 'Chase today', nextStyle: 'color:#ef4444;', notes: 'Interested in Jdeideh tower façade project. Decision maker confirmed.', phone2: '+961 1 556 200', email: 'george@saadehholding.com' },
-  { id: 2, name: 'Nadia Karam', company: 'NK Developers', phone: '+961 3 112 887', rep: 'Sara Khalil', source: 'Inbound Call', sourceStyle: 'background:#dbeafe;color:#1e40af;', stage: 'Qualified', stageStyle: 'background:#d1fae5;color:#065f46;', scope: 'Mixed-use · 4 mo rental', value: '$14,500', lastActivity: 'Yesterday', nextAction: 'Send quote', nextStyle: 'color:#d97706;', notes: 'Called in from billboard ad. Hamra tower project starting May.', phone2: '', email: 'nadia@nkdev.com' },
-  { id: 3, name: 'Fadi Haddad', company: 'Byblos Construction', phone: '+961 3 778 234', rep: 'Ahmed Nassar', source: 'Website', sourceStyle: 'background:#dcfce7;color:#166534;', stage: 'New Lead', stageStyle: 'background:#dbeafe;color:#1e40af;', scope: 'Residential · Rental TBD', value: '~$8,000', lastActivity: 'Apr 10', nextAction: 'Site survey', nextStyle: 'color:#3b82f6;', notes: 'Filled contact form on website. Needs site survey before quote.', phone2: '', email: 'fadi@byblosconst.com' },
-  { id: 4, name: 'Tony Azar', company: 'Azar Real Estate', phone: '+961 3 993 017', rep: 'Rami Younes', source: 'Referral', sourceStyle: 'background:#f3e8ff;color:#7e22ce;', stage: 'Negotiation', stageStyle: 'background:#f3e8ff;color:#7e22ce;', scope: 'Shoring + façade · 6 mo', value: '$36,000', lastActivity: 'Today', nextAction: 'Site visit Thu', nextStyle: 'color:#8b5cf6;', notes: 'Referred by Karim Nassar. Large Mazraa project, multi-phase.', phone2: '+961 1 443 210', email: 'tony@azarre.com' },
-  { id: 5, name: 'Maya Khoury', company: 'Skyline Developers', phone: '+961 70 555 666', rep: 'Sara Khalil', source: 'LinkedIn', sourceStyle: 'background:#f0fdf4;color:#166534;', stage: 'New Lead', stageStyle: 'background:#dbeafe;color:#1e40af;', scope: 'High-rise · sale interest', value: '~$38,000', lastActivity: 'Apr 10', nextAction: 'Discovery call', nextStyle: 'color:#3b82f6;', notes: 'Reached out via LinkedIn. Interested in purchasing scaffold for new high-rise project in Saudi Arabia.', phone2: '', email: 'maya@skylinedev.com' },
+  { 
+    id: 1, 
+    name: 'George Saadeh', 
+    company: 'Saadeh Holding', 
+    rep: 'Ahmed Nassar', 
+    value: 22000, 
+    stage: 'Quoted', 
+    scope: 'Façade · 3 mo rental', 
+    lastActivity: '2026-04-12',
+    nextAction: { type: 'Call', date: '2026-04-13', priority: 'High' },
+    email: 'george@saadehholding.com',
+    phone: '+961 3 445 621',
+    notes: 'Interested in Jdeideh tower façade project. Decision maker confirmed.'
+  },
+  { 
+    id: 2, 
+    name: 'Nadia Karam', 
+    company: 'NK Developers', 
+    rep: 'Sara Khalil', 
+    value: 14500, 
+    stage: 'Qualified', 
+    scope: 'Mixed-use · 4 mo rental', 
+    lastActivity: '2026-04-11',
+    nextAction: { type: 'Email', date: '2026-04-15', priority: 'Medium' },
+    email: 'nadia@nkdev.com',
+    phone: '+961 3 112 887',
+    notes: 'Called in from billboard ad. Hamra tower project starting May.'
+  },
+  { 
+    id: 3, 
+    name: 'Fadi Haddad', 
+    company: 'Byblos Construction', 
+    rep: 'Ahmed Nassar', 
+    value: 8000, 
+    stage: 'New Lead', 
+    scope: 'Residential · Rental TBD', 
+    lastActivity: '2026-04-10',
+    nextAction: { type: 'Meeting', date: '2026-04-12', priority: 'Low' },
+    email: 'fadi@byblosconst.com',
+    phone: '+961 3 778 234',
+    notes: 'Filled contact form on website. Needs site survey before quote.'
+  },
+  { 
+    id: 4, 
+    name: 'Tony Azar', 
+    company: 'Azar Real Estate', 
+    rep: 'Rami Younes', 
+    value: 36000, 
+    stage: 'Negotiation', 
+    scope: 'Shoring + façade · 6 mo', 
+    lastActivity: '2026-04-12',
+    nextAction: { type: 'Follow-up', date: '2026-04-13', priority: 'High' },
+    email: 'tony@azarre.com',
+    phone: '+961 3 993 017',
+    notes: 'Referred by Karim Nassar. Large Mazraa project, multi-phase.'
+  },
+  { 
+    id: 5, 
+    name: 'Maya Khoury', 
+    company: 'Skyline Developers', 
+    rep: 'Sara Khalil', 
+    value: 38000, 
+    stage: 'New Lead', 
+    scope: 'High-rise · sale interest', 
+    lastActivity: '2026-04-10',
+    nextAction: { type: 'Call', date: '2026-04-14', priority: 'Medium' },
+    email: 'maya@skylinedev.com',
+    phone: '+961 70 555 666',
+    notes: 'Reached out via LinkedIn. Interested in purchasing scaffold.'
+  },
+  { 
+    id: 6, 
+    name: 'Karim Nassar', 
+    company: 'Nassar Group', 
+    rep: 'Ahmed Nassar', 
+    value: 55000, 
+    stage: 'Contacted', 
+    scope: 'Bridge Access Project', 
+    lastActivity: '2026-04-09',
+    nextAction: { type: 'Email', date: '2026-04-11', priority: 'High' },
+    email: 'karim@nassargroup.com',
+    phone: '+961 70 111 222',
+    notes: 'Key client, expansion plans.'
+  }
 ];
 let crmExpanded = {};
 
@@ -2480,3 +2559,308 @@ function calcLoadCapacity() {
       </div>
     </div>`;
 }
+
+/* ════════════════════════════════════
+   CRM OVERHAUL LOGIC
+   ════════════════════════════════════ */
+
+let currentCrmView = 'pipeline';
+let currentCrmModule = 'leads';
+
+function setCrmView(view) {
+  currentCrmView = view;
+  const pipeBtn = document.getElementById('view-btn-pipeline');
+  const tableBtn = document.getElementById('view-btn-table');
+  
+  if (pipeBtn) {
+    pipeBtn.classList.toggle('bg-white', view === 'pipeline');
+    pipeBtn.classList.toggle('text-blue-600', view === 'pipeline');
+    pipeBtn.classList.toggle('shadow-sm', view === 'pipeline');
+    pipeBtn.classList.toggle('text-slate-500', view !== 'pipeline');
+  }
+  
+  if (tableBtn) {
+    tableBtn.classList.toggle('bg-white', view === 'table');
+    tableBtn.classList.toggle('text-blue-600', view === 'table');
+    tableBtn.classList.toggle('shadow-sm', view === 'table');
+    tableBtn.classList.toggle('text-slate-500', view !== 'table');
+  }
+
+  if (view === 'pipeline') renderCrmPipeline();
+  else renderCrmTable(currentCrmModule);
+}
+
+function renderCrmDashboard() {
+  const container = document.getElementById('crm-kpi-container');
+  if (!container) return;
+
+  const totalValue = crmLeads.reduce((sum, l) => sum + (l.value || 0), 0);
+  const activeDeals = crmLeads.length;
+  const wonDeals = 3; 
+  const totalLeads = 12;
+  const convRate = totalLeads ? ((wonDeals / totalLeads) * 100).toFixed(1) : 0;
+  const closingThisWeek = crmLeads.filter(l => l.stage === 'Negotiation').length;
+  const overdueCount = 2; 
+
+  const kpis = [
+    { label: 'Total Pipeline Value ($)', value: '$' + (totalValue / 1000).toFixed(1) + 'K', trend: '+12%', color: 'text-blue-600' },
+    { label: 'Active Deals', value: activeDeals, trend: '+2', color: 'text-slate-800' },
+    { label: 'Conversion Rate (%)', value: convRate + '%', trend: '+5%', color: 'text-emerald-600' },
+    { label: 'Deals Closing This Week', value: closingThisWeek, trend: 'High', color: 'text-purple-600' },
+    { label: 'Overdue Follow-ups', value: overdueCount, trend: '-1', color: 'text-red-500' }
+  ];
+
+  container.innerHTML = kpis.map(k => `
+    <div class="crm-kpi-card">
+      <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">${k.label}</p>
+      <div class="flex items-end justify-between">
+        <h3 class="text-2xl font-black ${k.color}">${k.value}</h3>
+        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${k.trend.includes('-') ? 'bg-red-50 text-red-500' : 'bg-emerald-50 text-emerald-600'}">${k.trend}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+const CRM_STAGES = ['New Lead', 'Contacted', 'Qualified', 'Quoted', 'Negotiation', 'Won / Lost'];
+
+function renderCrmPipeline() {
+  const container = document.getElementById('crm-view-container');
+  if (!container) return;
+
+  container.innerHTML = `<div class="kanban-board">
+    ${CRM_STAGES.map(stage => {
+      const stageLeads = crmLeads.filter(l => l.stage === stage);
+      return `
+        <div class="kanban-column" ondrop="dropDeal(event, '${stage}')" ondragover="allowDropDeal(event)" ondragleave="handleDragLeave(event)">
+          <div class="kanban-header">
+            <h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">${stage}</h3>
+            <span class="bg-slate-200 text-slate-500 text-[10px] px-2 py-0.5 rounded-full font-bold">${stageLeads.length}</span>
+          </div>
+          <div class="kanban-cards">
+            ${stageLeads.map(l => {
+              const overdue = new Date(l.nextAction.date) < new Date();
+              return `
+              <div class="kanban-card priority-${l.nextAction.priority.toLowerCase()}" draggable="true" ondragstart="dragDeal(event, ${l.id})">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">${l.company}</span>
+                  <span class="text-[10px] font-bold text-slate-400">$${((l.value || 0) / 1000).toFixed(1)}K</span>
+                </div>
+                <h4 class="text-sm font-bold text-slate-800 mb-1">${l.name}</h4>
+                <p class="text-[11px] text-slate-500 truncate mb-3">${l.scope || ''}</p>
+                <div class="flex items-center justify-between border-t border-slate-50 pt-2">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs">${l.nextAction.type === 'Call' ? '📞' : l.nextAction.type === 'Email' ? '📧' : l.nextAction.type === 'Meeting' ? '🤝' : '💬'}</span>
+                    <span class="text-[10px] font-bold ${overdue ? 'text-red-500' : 'text-slate-500'}">
+                      ${overdue ? 'Overdue: ' : ''}${new Date(l.nextAction.date).toLocaleDateString('en-US', {month: 'short', day: 'numeric'})}
+                    </span>
+                  </div>
+                  <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-[9px] font-bold text-slate-400">
+                    ${l.rep.split(' ').map(n=>n[0]).join('')}
+                  </div>
+                </div>
+              </div>
+            `}).join('')}
+          </div>
+        </div>
+      `;
+    }).join('')}
+  </div>`;
+}
+
+function renderCrmTable(module = 'leads') {
+  currentCrmModule = module;
+  const container = document.getElementById('crm-view-container');
+  if (!container) return;
+
+  const modules = [
+    { id: 'leads', label: 'Active Deals' },
+    { id: 'quotes', label: 'Recent Quotes' },
+    { id: 'tasks', label: 'Task List' }
+  ];
+
+  container.innerHTML = `
+    <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col h-[600px]">
+      <!-- Module Tabs -->
+      <div class="flex border-b border-slate-100 bg-slate-50/30 px-4">
+        ${modules.map(m => `
+          <button onclick="renderCrmTable('${m.id}')" class="px-5 py-3 text-xs font-bold transition-all border-b-2 ${currentCrmModule === m.id ? 'border-blue-600 text-blue-600' : 'border-transparent text-slate-400 hover:text-slate-600'}">
+            ${m.label}
+          </button>
+        `).join('')}
+      </div>
+
+      <div class="overflow-x-auto flex-1">
+        <table class="excel-table">
+          <thead>
+            ${module === 'leads' ? `
+              <tr>
+                <th>Deal Name</th>
+                <th>Company</th>
+                <th>Value</th>
+                <th>Stage</th>
+                <th>Sales Rep</th>
+                <th>Next Action</th>
+                <th>Due Date</th>
+              </tr>
+            ` : module === 'quotes' ? `
+              <tr>
+                <th>Quote #</th>
+                <th>Client</th>
+                <th>Project</th>
+                <th>Amount</th>
+                <th>Sent Date</th>
+                <th>Expiry</th>
+                <th>Status</th>
+              </tr>
+            ` : `
+              <tr>
+                <th>Task</th>
+                <th>Related To</th>
+                <th>Due Date</th>
+                <th>Priority</th>
+                <th>Assigned To</th>
+                <th>Status</th>
+              </tr>
+            `}
+          </thead>
+          <tbody>
+            ${renderModuleRows(module)}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+  const table = container.querySelector('table');
+  if (table) makeTableExcel(table);
+}
+
+function renderModuleRows(module) {
+  if (module === 'leads') {
+    return crmLeads.map(l => `
+      <tr>
+        <td class="font-bold text-blue-600">${l.name}</td>
+        <td>${l.company}</td>
+        <td class="font-bold text-slate-700">$${(l.value || 0).toLocaleString()}</td>
+        <td><span class="pill bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full text-[11px] font-semibold">${l.stage}</span></td>
+        <td>${l.rep}</td>
+        <td>${l.nextAction.type}</td>
+        <td class="text-slate-500">${l.nextAction.date}</td>
+      </tr>
+    `).join('');
+  } else if (module === 'quotes') {
+    return [
+      { no: 'QT-2026-041', client: 'Marina Tower LLC', proj: 'Facade', amt: 22000, date: '2026-04-12', exp: '2026-05-12', status: 'Sent' },
+      { no: 'QT-2026-045', client: 'Damac Dubai', proj: 'Shoring', amt: 45000, date: '2026-04-10', exp: '2026-05-10', status: 'Draft' },
+    ].map(q => `
+      <tr>
+        <td class="font-mono text-blue-600 py-2.5">${q.no}</td>
+        <td class="font-medium">${q.client}</td>
+        <td>${q.proj}</td>
+        <td class="font-bold text-slate-700">$${q.amt.toLocaleString()}</td>
+        <td>${q.date}</td>
+        <td class="text-slate-400">${q.exp}</td>
+        <td><span class="pill bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">${q.status}</span></td>
+      </tr>
+    `).join('');
+  } else {
+    return [
+      { task: 'Follow up on quote', rel: 'George Saadeh', due: '2026-04-14', pri: 'High', rep: 'Ahmed Nassar', status: 'Pending' },
+      { task: 'Site survey', rel: 'Nadia Karam', due: '2026-04-15', pri: 'Medium', rep: 'Sara Khalil', status: 'Scheduled' },
+    ].map(t => `
+      <tr>
+        <td class="font-medium">${t.task}</td>
+        <td class="text-blue-600">${t.rel}</td>
+        <td>${t.due}</td>
+        <td><span class="pill priority-${t.pri.toLowerCase()} px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">${t.pri}</span></td>
+        <td>${t.rep}</td>
+        <td><span class="text-xs text-amber-600 font-bold">${t.status}</span></td>
+      </tr>
+    `).join('');
+  }
+}
+
+// Drag & Drop
+function allowDropDeal(ev) { 
+  ev.preventDefault(); 
+  ev.currentTarget.classList.add('drag-over');
+}
+
+function handleDragLeave(ev) {
+  ev.currentTarget.classList.remove('drag-over');
+}
+
+function dragDeal(ev, id) { 
+  ev.dataTransfer.setData("leadId", id); 
+  ev.target.classList.add('dragging');
+}
+
+function dropDeal(ev, stage) {
+  ev.preventDefault();
+  ev.currentTarget.classList.remove('drag-over');
+  const id = ev.dataTransfer.getData("leadId");
+  const lead = crmLeads.find(l => l.id == id);
+  if (lead) {
+    lead.stage = stage;
+    renderCrmPipeline();
+    renderCrmDashboard();
+    showERPToast(`✓ ${lead.name} moved to ${stage}`);
+  }
+}
+
+// Activity Log Overlay
+let activityLogOverlayActive = false;
+function toggleActivityLogOverlay() {
+  activityLogOverlayActive = !activityLogOverlayActive;
+  const overlay = document.getElementById('overlay-activity-log');
+  if (overlay) {
+    overlay.classList.toggle('active', activityLogOverlayActive);
+    if (activityLogOverlayActive) renderOverlayLog();
+  }
+}
+
+function renderOverlayLog() {
+  const container = document.getElementById('overlay-log-feed');
+  if (!container) return;
+
+  const timeFilter = document.getElementById('log-overlay-time')?.value || 'all';
+  
+  // Mock time filtering logic
+  const filteredData = ACTIVITY_LOG_DATA.filter(e => {
+    if (timeFilter === 'all') return true;
+    // Mocking: only recent times are today
+    if (timeFilter === 'today') return ['08:43', '08:15', '07:52', '07:30', '07:10', '06:58', '06:30'].includes(e.time);
+    return true; 
+  });
+
+  container.innerHTML = filteredData.map(e => `
+    <div class="flex items-start gap-4 px-6 py-4 hover:bg-slate-50 transition cursor-pointer">
+      <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 text-base mt-0.5" style="background:#f1f5f9;">${e.icon}</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between mb-0.5">
+          <span class="text-xs font-bold text-slate-800">${e.label}</span>
+          <span class="text-[10px] text-slate-400">${e.time}</span>
+        </div>
+        <p class="text-[11px] text-slate-500 mb-1">${e.contact} · ${e.project || 'General'}</p>
+        <p class="text-xs text-slate-600 leading-relaxed">${e.note}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Navigation Logic
+const _crmNavBase = window.navigate;
+window.navigate = function(page) {
+  _crmNavBase(page);
+  if (page === 'crm') {
+    renderCrmDashboard();
+    setCrmView(currentCrmView);
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const activePage = document.querySelector('.page.active')?.id;
+  if (activePage === 'page-crm') {
+    renderCrmDashboard();
+    setCrmView(currentCrmView);
+  }
+});
